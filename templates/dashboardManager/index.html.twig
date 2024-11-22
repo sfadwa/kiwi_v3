@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Manager{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <ul class="tab-period nav nav-pills justify-content-center mt-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daily</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Weekly</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Monthly</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-9">
+      <div class="d-flex">
+        <div class="flex-fill item1"> {{ render_chart(chart1, {'class': 'my-chart'}) }} }</div>
+        <div class="flex-fill item2"> {{ render_chart(chart2, {'class': 'my-chart'}) }} }</div>
+      </div>
+    </div>
+    <div class="col-3"> 
+      <div class="item5">
+        <button class="dashboardchoice-button">Bouton Electricity</button>
+        <button class="dashboardchoice-button">Bouton Gas</button>
+        <button class="dashboardchoice-button">Bouton Water</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <div class="d-flex">
+          <div class="item3"> {{ render_chart(chart3, {'class': 'my-chart'}) }} </div>
+          <div class="item4"> {{ render_chart(chart4, {'class': 'my-chart'}) }} </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+    
+
+
+{% endblock %}

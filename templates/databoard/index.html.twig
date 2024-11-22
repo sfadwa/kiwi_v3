@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Databoard{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <!-- Row for period -->
+  <div class="row">
+    <div class="col-3">
+      <ul class="tab-period nav nav-pills justify-content-center mt-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daily</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Weekly</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Monthly</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Row for charts -->
+  <div class="row">
+    <div class="col-9">
+      <div class="bg-dark mt-2">
+        {{ render_chart(WeeklyChart, {'class': 'my-chart'}) }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Row for table-->
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <table  class="table-databoard table table-bordered" >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            {% for i in range(1, 31) %}
+            <th scope="col">{{ i }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for machine in machines %}
+    <tr>
+      <td scope="row" style="width: 5%;">{{ machine.name }}</td>
+      {% for day in range(1, 31) %}
+      <td style="width: 3%;">{{ machine.data|default(0) }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

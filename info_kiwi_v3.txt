@@ -1,0 +1,14 @@
+Last update done :
+Sidebar responsive (open and close)
+
+/*****************************TODO*****************************/
+1- Sidebar responsive with the main
+2- Databoard (get Qssf one)
+3- Add a ticketing system (contact)
+4- Add a top 5
+5- Add a MyCo2 
+6- Add settings
+
+/*****************************PROTOTYPE*****************************/
+
+- Visual flow and process flow are on Figma 

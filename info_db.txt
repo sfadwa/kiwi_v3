@@ -1,0 +1,23 @@
+/*****************************ENTITY*****************************/
+
+Role (id, name, created_at, created_by, updated_at, updated_by, isActive)
+User (id, firstname, lastname, password, email, created_at, created_by, updated_at, updated_by, isActive)
+Company (id, name, contactPerson, email, phoneNumber, created_at, created_by, updated_at, updated_by, isActive)
+Project (id, name, dateTimeStart, dateTimeEnd, created_at, created_by, updated_at, updated_by, isActive)
+Machine (id, name, created_at, created_by, updated_at, updated_by, isActive)
+DataEnergy (id, value, date)
+EnergyType (id, name, abbreviation)
+
+
+/*****************************RELATION*****************************/
+
+Role → OneToMany → User ($users)
+User → ManyToOne → Company ($company)
+Company → OneToMany → Project ($projects)
+Project → OneToMany → Machine ($machines)
+Machine → OneToMany → DataEnergy ($dataEnergies)
+DataEnergy → ManyToOne → EnergyType ($EnergyType)
+
+
+
+check uml_db.uxf

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Machine{% endblock %}
+
+{% block body %}
+    <h1>Machine</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ machine.id }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ machine.createdAt ? machine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedBy</th>
+                <td>{{ machine.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ machine.updatedAt ? machine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedBy</th>
+                <td>{{ machine.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ machine.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ machine.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_machine_index') }}">back to list</a>
+
+    <a href="{{ path('app_machine_edit', {'id': machine.id}) }}">edit</a>
+
+    {{ include('machine/_delete_form.html.twig') }}
+{% endblock %}

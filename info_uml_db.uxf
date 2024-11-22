@@ -1,0 +1,216 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>In green = generated in Doctrine
+in white = ideas of tables and relation but not generated</help_text><element><id>UMLClass</id><coordinates><x>441</x><y>273</y><w>176</w><h>192</h></coordinates><panel_attributes>User
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+password : string
+email : string
+firstname : string
+lastname : string
+
+Relations :
+identity_ID
+
+fg=green
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>617</x><y>1041</y><w>176</w><h>56</h></coordinates><panel_attributes>Tickets_Status
+--
+id
+name : string
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>49</y><w>176</w><h>120</h></coordinates><panel_attributes>Role
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+name : string
+
+fg=green
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>449</x><y>625</y><w>176</w><h>216</h></coordinates><panel_attributes>Company
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+name : String
+contactPerson : String
+email : string
+phoneNumber ; String
+
+fg=green
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>745</x><y>753</y><w>176</w><h>192</h></coordinates><panel_attributes>Ticket_Details
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+priority: string
+issueDescription : String
+
+Relations :
+status_id
+company_id
+service_id
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1089</x><y>865</y><w>176</w><h>208</h></coordinates><panel_attributes>Attachement
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+fileName : String
+fileType : string
+fileSize : int
+filePath ; string
+
+
+Relations :
+Ticket_Details_id
+company_id
+attachement_id
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>857</x><y>1041</y><w>176</w><h>56</h></coordinates><panel_attributes>service
+--
+id
+name : string
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1089</x><y>665</y><w>176</w><h>184</h></coordinates><panel_attributes>Resolution_Details
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+Priority: string
+issueDescription : String
+
+
+Relations :
+status_id
+ticket_id
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>521</x><y>457</y><w>96</w><h>184</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+is attached to &gt;
+
+fg=green</panel_attributes><additional_attributes>10;210;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>617</x><y>809</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+generate &gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>753</x><y>937</y><w>48</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+has &gt;</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>897</x><y>937</y><w>64</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+belong &gt;</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>913</x><y>761</y><w>192</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+has &gt;</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>913</x><y>913</y><w>192</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+ Attached &gt;</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>745</x><y>537</y><w>176</w><h>184</h></coordinates><panel_attributes>Project
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+Name: string
+dateTimeStart : DateTime
+dateTimeEnd : DateTime
+
+
+Relations :
+Machine_id
+
+fg=green
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>745</x><y>281</y><w>176</w><h>184</h></coordinates><panel_attributes>Machine
+--
+id
+created_at : DateTime
+created_by : Int
+updated_at : DateTime
+updated_by : Int
+isActive : boolean
+Name: string
+
+
+Relations :
+project_id
+
+fg=green
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>817</x><y>457</y><w>72</w><h>96</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+depend &gt;
+
+fg=green</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>617</x><y>641</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+has &gt;
+
+fg=green</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>521</x><y>161</y><w>64</w><h>128</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+&lt; has &gt;
+
+fg=green</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>25</x><y>201</y><w>344</w><h>40</h></coordinates><panel_attributes>In green = generated in Doctrine
+in white = ideas of tables and relation but not generated</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1049</x><y>281</y><w>176</w><h>184</h></coordinates><panel_attributes>DataEnergy
+--
+id
+value: decimal
+date: date
+
+
+Relations :
+machine_id
+energy_id
+
+fg=green
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1049</x><y>1</y><w>176</w><h>184</h></coordinates><panel_attributes>EnergyType
+--
+id
+Name: string
+Abbreviation : string
+
+
+Relations :
+dataEnergy_id
+
+fg=green
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>913</x><y>353</y><w>152</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=*
+has &gt;
+
+fg=green</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1137</x><y>177</y><w>48</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+has &gt;
+
+fg=green</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element></diagram>

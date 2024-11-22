@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Login{% endblock %}
+
+
+{% block body %}
+   <div class="container">
+        <div class="row justify-content-center position-absolute top-50 start-50 translate-middle col-md-4">
+            <form method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                {# <img src="{{ asset('assets/img/logo_client/logoMondi.jpg') }}" class="sign-in-client-logo mx-auto d-block" alt="Company's logo"> #}
+
+                <div class="sign-in-section">
+                    <h1 class="text-center mb-3 font-weight-normal text-white">Please sign in</h1>
+                    {# <label for="inputEmail">Email</label> #}
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-3" autocomplete="email" placeholder="Email" required autofocus>
+                    {# <label for="inputPassword">Password</label> #}
+                    <input type="password" name="password" id="inputPassword" class="form-control mt-3" autocomplete="current-password" placeholder="Password" required>
+                    
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    {# Checkbox "remember me" 
+                    <div class="checkbox mb-3 mt-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div> #}
+
+                    {# Reset password #}
+                    <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
+                        <div>
+                            <a href="#" title="Reset password">Forgot password ?</a>
+                        </div>
+                        <button class="btn btn-lg btn-success" type="submit">Sign in</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <img src="{{ asset('assets/img/logo_QEnergie/LogoQEnergieblanc.png') }}" class="sign-in-logo mx-auto d-block mt-3" alt="QEnergie logo">
+                    <p class="sign-in-version text-white"> Version 3.0.0 </p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

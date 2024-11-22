@@ -1,0 +1,88 @@
+<aside id="sidebar">
+    <div class="d-flex">
+        <button class="toggle-btn" type="button">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="sidebar-logo">
+            <a href="#" class="d-flex justify-content-center align-items-center mb-3 m-3">
+                <img src="{{ asset('assets/img/logo_QEnergie/LogoQEnergieblanc.png') }}" class="sidebar-logo" alt="QEnergie logo">
+            </a>
+        </div>
+    </div>
+    <ul class="sidebar-nav">
+        <li class="sidebar-item">
+                <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                    data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Dashboard</span>
+                </a>
+                <ul id="auth" class="sidebar-dropdown list-unstyled collapse 
+                        {% if app.request.get('_route') in ['dashboard_manager', 'electricity_dashboard', 'gas_dashboard', 'water_dashboard'] %}show{% endif %}" 
+                        data-bs-parent="#sidebar">
+                    <li class="sidebar-item {% if app.request.get('_route') == 'dashboard_manager' %}active{% endif %}">
+                        <a  href="{{ path ('dashboard_manager') }}" class="sidebar-link">Manager</a>
+                    </li>
+                    <li class="sidebar-item {% if app.request.get('_route') == 'electricity_dashboard' %}active{% endif %}">
+                        <a href="{{ path ('dashboard_general') }}" class="sidebar-link">Electricity</a>
+                    </li>
+                    <li class="sidebar-item {% if app.request.get('_route') == 'gas_dashboard' %}active{% endif %}">
+                        <a class="sidebar-link">Gas</a>
+                    </li>
+                    <li class="sidebar-item {% if app.request.get('_route') == 'water_dashboard' %}active{% endif %}">
+                        <a class="sidebar-link">Water</a>
+                    </li>
+                </ul>
+            </li>
+        <li class="sidebar-item {% if app.request.get('_route') == 'databoard_general' %}active{% endif %}">
+            <a href="{{ path ('databoard_general') }}" class="sidebar-link">
+                <i class="fa-solid fa-gauge"></i>
+                <span>Databoard</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Top 5</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-leaf"></i>
+                <span>My CO2</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+                <i class="fa-solid fa-gear"></i>
+                <span>Setting</span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidebar-footer">
+        <a href="{{ path('app_logout') }}" class="sidebar-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>
+                {% if app.user %}
+                {{ app.user.username|capitalize }}
+                {% else %}
+                    No user is currently connected
+                {% endif %}
+            </span>
+        </a>
+        <a href="#" class="d-flex justify-content-center align-items-center m-3 mt-auto">
+            <img src="{{ asset('assets/img/logo_QEnergie/LogoQEnergieblanc.png') }}" class="sidebar-logo" alt="QEnergie logo">
+        </a>
+        <div class="text-center">
+            <span class="version">Version 3.0.0</span>
+        </div>
+    </div>
+</aside>
+
+
+

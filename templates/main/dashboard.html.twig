@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Electricity{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <ul class="tab-period nav nav-pills justify-content-center mt-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Daily</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Weekly</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Monthly</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-9">
+      <div class="bg-dark mt-2">
+        {{ render_chart(chart1, {'class': 'my-chart'}) }}
+      </div>
+    </div>
+
+    <div class="col-3">
+      <p class="total-kw-consumed text-center">Total KW consumed</p>
+      <p class="amount-consumed text-center">250 000</p>
+
+      <select class="form-select mt-3">
+        <option value="all">All projects</option>
+        {% for project in projects %}
+          <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+      </select>
+
+      <select class="form-select mt-2" name="machine1">
+        <option value="all">All machines</option>
+        {% for machine in machines %}
+          <option value="{{ machine.id }}">{{ machine.name }}</option>
+        {% endfor %}
+      </select>
+
+      <div class="text-white text-center mt-4">
+        {{ form_label(form.dateTimeStart, 'Start : ') }}
+        {{ form_widget(form.dateTimeStart) }}
+      </div>
+
+      <div class="text-white text-center mt-3">
+        {{ form_label(form.dateTimeEnd, 'End : ') }}
+        {{ form_widget(form.dateTimeEnd) }}
+      </div>
+
+      <div class="text-white text-center mt-3">
+        <button type="button" class="btn btn-success mt-3 w-100" id="last7days">Last 7 days</button>
+      </div>
+
+      <div class="text-white text-center">
+        <button type="button" class="btn btn-success mt-3 w-100" id="last7days">Last month</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div class="bg-dark mt-2">
+        {{ render_chart(chart2, {'class': 'my-chart'}) }}
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-dark mt-2">
+            {{ render_chart(chart3, {'class': 'my-chart'}) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="row">
+        <div class="col-6">
+          <div class="bg-dark mt-2">
+            {{ render_chart(chart4, {'class': 'my-chart'}) }}
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="bg-dark mt-2">
+            {{ render_chart(chart5, {'class': 'my-chart'}) }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="text-white text-center mt-3">
+        <button type="button" class="btn btn-success mt-3 w-100" id="ShiftA">Shift A (6-14)</button>
+        <button type="button" class="btn btn-success mt-3 w-100" id="ShiftB">Shift B (14-22)</button>
+        <button type="button" class="btn btn-success mt-3 w-100" id="ShiftC">Shift C (22-16)</button>
+        <button type="button" class="btn btn-success mt-3 w-100" id="ShiftC">All shift</button>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
